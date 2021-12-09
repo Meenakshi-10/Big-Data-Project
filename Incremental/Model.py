@@ -26,15 +26,12 @@ def naiveBayes(data):
 	class_data=np.array(data.select("class").collect())
 	array_data =  np.array(data.select("attribute").collect())
 	n, n_x, n_y = array_data.shape
-	#warnings.filterwarnings("ignore")
 	array_data = array_data.reshape((n, n_x*n_y))
 	x_train, x_test, y_train, y_test = train_test_split(array_data, class_data, test_size=0.20, random_state=45)
 	model = MultinomialNB()
 	x=np.unique(y_train)
 	model.partial_fit(x_train, y_train, x)
 	y_pred=model.predict(x_test)
-	#accuracy = model.score(x_test,y_test)
-	#print("Accuracy Naive Bayes: ", accuracy)
 	recall = precision_score(y_test,y_pred,average='binary')
 	return(recall)
 
