@@ -17,10 +17,6 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score,precision_score, recall_score
 
 
-def csv_write(row):
-	with open("plots.csv", 'a') as csvfile:
-		csvwriter = csv.writer(csvfile)
-		csvwriter.writerow(row)
 
 def naiveBayes(data):
 	class_data=np.array(data.select("class").collect())
