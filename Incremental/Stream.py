@@ -33,9 +33,6 @@ ssc = StreamingContext(sc, 5)
 lines=ssc.socketTextStream("localhost", 6100)
 
 fields = ['NaiveBayesM','NaiveBayesB']
-with open("plots.csv", 'w') as csvfile:
-	csvwriter = csv.writer(csvfile)
-	csvwriter.writerow(fields)
 
 def Convert_Df(time, rdd):
     print("......................")
